@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: sachac-plover-retro-stroke
+Version: 0.1.0
+Summary: Converts the last X translations to their stroke form
+Home-page: https://github.com/sachac/plover_retro_stroke
+Author: sachac
+License: GNU General Public License v3 (GPLv3)
+Keywords: plover
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Description-Content-Type: text/org
+License-File: LICENSE
+
+Converts the last X translations to their stroke form, depending on how many times you invoke it.
+
+For example, if you define a stroke for =STR*L= as =retro_stroke, you can type:
+
+#+begin_example
+Strokes:     EU AEUT AEU KAR ROT TP-PL STR*L
+Translation: I ate a carrot TP-PL
+
+Strokes:     EU AEUT AEU KAR ROT TP-PL STR*L STR*L
+Translation: I ate a KAR ROT TP-PL
+
+Strokes:     EU AEUT AEU KAR ROT TP-PL STR*L STR*L STR*L
+Translation: I ate AEU KAR ROT TP-PL
+#+end_example
+
+and so on.
+
+You can specify the stroke separator and text to go before and after with the syntax =retro_stroke:separator,before,after.
+
+By default the separator is a space and the before and after text is empty.
+
+If you define a stroke as =retro_stroke:/, `,`
+
+#+begin_example
+Strokes:     EU AEUT AEU KAR ROT TP-PL STR*L
+Translation: I ate a carrot `TP-PL`
+
+Strokes:     EU AEUT AEU KAR ROT TP-PL STR*L STR*L
+Translation: I ate a `KAR/ROT/TP-PL`
+
+Strokes:     EU AEUT AEU KAR ROT TP-PL STR*L STR*L STR*L
+Translation: I ate `AEU/KAR/ROT/TP-PL`
+#+end_example
+
+You can install this plugin from the command-line with:
+
+#+begin_example
+git clone https://github.com/sachac/plover_retro_stroke
+cd plover_retro_stroke
+plover -s plover_plugins install -e .
+#+end_example
+
+or
+
+#+begin_example
+plover -s plover_plugins install git+https://github.com/sachac/plover_retro_stroke.git
+#+end_example
+
+
